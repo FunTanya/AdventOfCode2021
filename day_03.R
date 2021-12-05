@@ -1,6 +1,14 @@
 zeros.ones <- readLines("data/input_03.txt")
 n <- max(nchar(zeros.ones))
 oxygen <- Co2 <- read.fwf(textConnection(zeros.ones), rep(1, n))
+
+#1
+puzzle.one.max <- as.numeric(apply(oxygen,2,sum)>nrow(oxygen)/2)
+puzzle.one.min <- 1-puzzle.one.max
+strtoi(paste(puzzle.one.max, collapse = ""), base=2)*
+  strtoi(paste(puzzle.one.min, collapse = ""), base=2)
+
+#2
 for (i in 1:(n)){
 ones <- sum(oxygen[,i])
 zeros <- sum(!oxygen[,i])
