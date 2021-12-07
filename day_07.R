@@ -7,3 +7,6 @@ for (i in (min(data):max(data))){
   cost.2[i] <-  sum(sapply(abs(data-i), FUN = horrible))
 }
 min(cost.1);min(cost.2)
+
+# cost.1 after coffee break :-)
+sum((abs(data-median(data)))) 
