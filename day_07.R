@@ -10,3 +10,10 @@ min(cost.1);min(cost.2)
 
 # cost.1 after coffee break :-)
 sum((abs(data-median(data)))) 
+
+# cost.2 by  CrashAndSideburns
+# https://www.reddit.com/r/adventofcode/comments/rawxad/2021_day_7_part_2_i_wrote_a_paper_on_todays/
+k <- floor(mean(data))
+0.5*sum((k-data)^2+abs(k-data))
+k <- ceiling(mean(data))
+0.5*sum((k-data)^2+abs(k-data))
