@@ -24,7 +24,7 @@ for( move.x in (1:n)){
           result.x[i] <- move.x
           result.y[i] <- move.y
           i <- i+1
-          if (max.y>max){max <- max.y; kuk.x <- move.x; kuk.y <- move.y}
+          if (max.y>max){max <- max.y}
           break
         }
       }
