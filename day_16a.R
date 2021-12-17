@@ -1,3 +1,7 @@
+library(BMS)
+bin2dec <- function(x) {
+  sum(2^(which(rev(unlist(strsplit(as.character(x), "")) == 1))-1))}
+
 sum <- 0
 cototumame <- function(x){
   version <- bin2dec(x[1:3])
