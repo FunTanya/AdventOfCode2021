@@ -15,7 +15,7 @@ cototumame <- function(x){
       x <- x[-(1:5)]
       if (pom==0){break}
     }
-    if ((BinToDec(x)==0) | (identical(x,numeric(0)))) 
+    if ((bin2dec(x)==0) | (identical(x,numeric(0)))) 
     {
       print("konec celeho"); 
     }
