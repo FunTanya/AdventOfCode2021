@@ -6,8 +6,7 @@ sum <- 0
 cototumame <- function(x){
   version <- bin2dec(x[1:3])
   type <- bin2dec(x[4:6])
-  print(version)
-  sum <<- sum+version#sum <<- sum+version
+  sum <<- sum+version
   x <- x[-(1:6)]
   if (type==4){
     repeat{
