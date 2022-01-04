@@ -17,9 +17,8 @@ for (ktera in 1:tab.count){
   }
 }
 
-first.win.res <- winning.number[which.min(winner.order)]*
-notwinning.numbers[which.min(winner.order)]
+print(first.win.res <- winning.number[which.min(winner.order)]*
+  notwinning.numbers[which.min(winner.order)])
 
-last.win.res <- winning.number[which.max(winner.order)]*
-notwinning.numbers[which.max(winner.order)]
-
+print(last.win.res <- winning.number[which.max(winner.order)]*
+  notwinning.numbers[which.max(winner.order)])
