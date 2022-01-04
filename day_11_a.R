@@ -16,9 +16,8 @@ data.source <- readLines(MyFile)
 n <- max(nchar(data.source))
 data<- read.fwf(textConnection(data.source), rep(1, n))
 data <- cbind(-999,data,-999);data <- rbind(-999,data,-999)
-#main part
+#main part A
 flashes <- 0
-sum <- 0
 for (step.i in (1:100)){
   change.allowed <- data==data
   data <- data+1  
@@ -29,7 +28,7 @@ for (step.i in (1:100)){
       data <- increase(data)
       if (was.change==FALSE){break}
     }
-  if (identical(data,olddata)){break}
+    if (identical(data,olddata)){break}
   }
   flashes <- flashes+sum(data>9)
   data[data>9] <- 0
