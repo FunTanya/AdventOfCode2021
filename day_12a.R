@@ -54,6 +54,6 @@ repeat{
   } 
   else {cesta <- c(cesta,names(dalsi.moznosti[1]))}
   if (is.na(posledni(cesta))) break
-  if (posledni(cesta)=="end") {print(cesta); inc(vysl.pocet)}
+  if (posledni(cesta)=="end") {inc(vysl.pocet)}
 }
 print(vysl.pocet)
