@@ -42,7 +42,7 @@ vysl.pocet <- 0
 zakazane <- list()
 for (i in 1:100)
   zakazane[[i]] <- c("start")
-
+### warning - too long!
 repeat{
   dalsi.moznosti <-  which(TSP.matrix[posledni(cesta),]==1)
   dalsi.moznosti.ok <- sapply(names(dalsi.moznosti),muzu.pridat, dosudcesta=cesta)
@@ -53,6 +53,6 @@ repeat{
     cesta <- cesta[-length(cesta)]
   }   else {cesta <- c(cesta,names(dalsi.moznosti[1]))}
   if (is.na(posledni(cesta))) break
-  if (posledni(cesta)=="end") {print(cesta); inc(vysl.pocet)}
+  if (posledni(cesta)=="end") {inc(vysl.pocet)}
 }
 print(vysl.pocet)
