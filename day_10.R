@@ -1,5 +1,4 @@
 MyFile <- "data/input_10.txt"
-#MyFile <- "testdata/test_10.txt"
 data <- readLines(MyFile)
 
 char.string <- function(x){
@@ -18,13 +17,12 @@ fun.penalty.1 <- function(char){
   else return(25137)
 }
 
-fun.penalty.2 <- function(char){ #"[" "(" "{" "(" "[" "[" "{" "{"
-    if (char=="(") return(1)
-    else if (char=="[") return(2)
-    else if (char=="{") return(3) 
-    else return(4)
+fun.penalty.2 <- function(char){
+  if (char=="(") return(1)
+  else if (char=="[") return(2)
+  else if (char=="{") return(3) 
+  else return(4)
 }
-which(c("{","(","[","<")==l) == which(c("}",")","]",">")==p)
 #funkce pro radek:  
 prvni <- function(radek){
   pole <- vector()
@@ -34,13 +32,13 @@ prvni <- function(radek){
     if (grepl(char.string(char),"\\(\\[\\{<"))
       pole <- c(pole,char) # put left to pole
     else
-      {#print("kuk")#nedam do pole, podivam se, jestli je prava
-        if (levaprava(tail(pole,1),char)){pole <- head(pole,-1)}
-          else {
-            penalty.bad <- fun.penalty.1(char);
-            break
-            }
+    {#nedam do pole, podivam se, jestli je prava
+      if (levaprava(tail(pole,1),char)){pole <- head(pole,-1)}
+      else {
+        penalty.bad <- fun.penalty.1(char);
+        break
       }
+    }
   }
   if (penalty.bad==0) {
     for (char in rev(pole)){s <- s*5+fun.penalty.2(char)}
@@ -49,11 +47,11 @@ prvni <- function(radek){
 }
 #main program:
 sum <- 0
-for.median <- vector()
+median.data <- vector()
 for (i in (1:length(data))){  
   sum <- sum+prvni(data[i])[2]
   pom <- prvni(data[i])[1]
-  if (pom!=0) for.median <- c(for.median,pom)
-  }
+  if (pom!=0) median.data <- c(median.data,pom)
+}
 print(sum)
-print(median(for.median))
+print(median(median.data))
