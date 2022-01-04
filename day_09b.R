@@ -20,7 +20,6 @@ spocitej <- function(indexi,indexj){
   return(vysl)
 }
 MyFile <- "data/input_09.txt"
-#MyFile <- "testdata/test_09.txt"
 data <- readLines(MyFile)
 n <- max(nchar(data))
 matice <-read.fwf(textConnection(data), rep(1, n))
@@ -32,9 +31,8 @@ for (i in 2:(n+1)){
   for (j in 2:(n+1)){
     if (matice[i,j]< min(c(matice[i-1,j],matice[i+1,j],
                            matice[i,j-1],matice[i,j+1]),na.rm = TRUE)){
-      print(spocitej(i,j))
-     bahna[count] <- spocitej(i,j)
-     count <- count+1
+      bahna[count] <- spocitej(i,j)
+      count <- count+1
     }
   }
 }
