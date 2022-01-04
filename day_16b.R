@@ -1,5 +1,5 @@
 library(BMS)
-(x <- hex2bin("9C0141080250320F1802104A08")) 
+x <- hex2bin(readLines("data/input_16.txt"))
 vers <-  type <- len <- value <- ask.n<- ask.len<-op.01<-NA
 df <- data.frame(vers , type, op.01 , len ,  value,  ask.n, ask.len) 
 
