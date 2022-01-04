@@ -1,21 +1,20 @@
-  MyFile <- "data/input_14.txt"
-  #MyFile <- "testdata/test_14.txt"
-  x <- unlist(strsplit(readLines(MyFile)[1],split = ""))
-  data <- read.table(text = gsub(" -> ", ",", readLines(MyFile)),sep=",")
-  couple <- rownames(data)
-  insert <- data[,1]
-  final.table <- table(factor(x, levels=names(table(insert))))
-  names <- names(final.table)
-  counts <- final.table
-  insert.poradi <- vector()
-  for (i in 1:length(couple)){
-    insert.poradi[i] <- which(names==insert[i])
-  }
+MyFile <- "data/input_14.txt"
+x <- unlist(strsplit(readLines(MyFile)[1],split = ""))
+data <- read.table(text = gsub(" -> ", ",", readLines(MyFile)),sep=",")
+couple <- rownames(data)
+insert <- data[,1]
+final.table <- table(factor(x, levels=names(table(insert))))
+names <- names(final.table)
+counts <- final.table
+insert.poradi <- vector()
+for (i in 1:length(couple)){
+  insert.poradi[i] <- which(names==insert[i])
+}
 coovlivni <- function(char){
   added <- insert[couple==char]
   return(c(paste0(substr(char,1,1),added),
-          paste0(added,substr(char,2,2)))
-         )
+           paste0(added,substr(char,2,2)))
+  )
 }
 vliv.1 <- vliv.2 <- pocatecnidvojice <- vector()
 for (i in 1:length(couple)){
@@ -31,7 +30,7 @@ for (i in 1:length(counts)){
   addedcounts[i]<- sum(kolikratkteradvojice[insert.poradi==i])}
 counts <- counts+addedcounts
 
-for (i in 1:39){ #9
+for (i in 1:39){ #9 for first star
   novypocet <-integer(length(couple))
   for (i in 1:length(couple)){
     pismenko <- insert[couple==vliv.1[i]]
@@ -41,6 +40,6 @@ for (i in 1:39){ #9
     counts[pismenko]=counts[pismenko]+kolikratkteradvojice[i]
     novypocet[couple==vliv.2[i]] <- novypocet[couple==vliv.2[i]]+kolikratkteradvojice[i]
   }
-    kolikratkteradvojice <- novypocet
+  kolikratkteradvojice <- novypocet
 }
 format(max(counts)-min(counts), scientific = FALSE)
