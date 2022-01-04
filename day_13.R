@@ -30,6 +30,7 @@ repeat{
     paper <- fold.x(paper,as.numeric(temp[2]))}
   if (substr(temp[1], nchar(temp[1]), nchar(temp[1]))=="y"){
         paper <- fold.y(paper,as.numeric(temp[2]))} 
+  if (i==rulez.start) print(sum(paper>0))   ### first star
   i <- i+1
 }
 
