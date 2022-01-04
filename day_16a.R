@@ -2,7 +2,6 @@ library(BMS)
 bin2dec <- function(x) {
   sum(2^(which(rev(unlist(strsplit(as.character(x), "")) == 1))-1))}
 
-sum <- 0
 cototumame <- function(x){
   version <- bin2dec(x[1:3])
   type <- bin2dec(x[4:6])
@@ -32,4 +31,7 @@ cototumame <- function(x){
   }
   return(sum)
 }   
-cototumame(x)
+
+sum <- 0
+my.number <- readLines("data/input_16.txt")
+cototumame(hex2bin(my.number))
