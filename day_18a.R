@@ -84,6 +84,7 @@ for (i in 1:length(dataall)){ #snailfish number as a table
   data.cisla[[i]] <- rad2tab(temp)[2]$cisla
   data.pocty[[i]] <- rad2tab(temp)[1]$pocty
 }
+# PART 1
 #addition of numbers
 result <- data.frame(pocty =  data.pocty[[1]], cisla= data.cisla[[1]])
 for (i in 2:length(data.cisla)){
@@ -97,3 +98,31 @@ for (i in 2:length(data.cisla)){
   }
 }
 magnitude(result)
+
+# PART 2
+max <- -Inf
+for (i in 1:length(data.cisla)){
+  for (j in 1:length(data.cisla)){
+    if (i!=j){
+      snail.1 <- data.frame(pocty =  data.pocty[[i]], cisla= data.cisla[[i]])
+      snail.2 <- data.frame(pocty =  data.pocty[[j]], cisla= data.cisla[[j]])
+      result  <-  snailsum(snail.1,snail.2) # first + second
+      repeat{
+        if (max(result$pocty)>4) {
+          result <- explode(result)} else
+            if (max(result$cisla)>9) {result <- split(result)}
+        if ((max(result$pocty)<5)  &  (max(as.numeric(result$cisla))<10)) break
+      }
+      if (magnitude(result)>max) {max <- magnitude(result)}
+      result  <-  snailsum(snail.2,snail.1) # second+ first 
+      repeat{
+        if (max(result$pocty)>4) {
+          result <- explode(result)} else
+            if (max(result$cisla)>9) {result <- split(result)}
+        if ((max(result$pocty)<5)  &  (max(as.numeric(result$cisla))<10)) break
+      }
+      if (magnitude(result)>max) {max <- magnitude(result)}
+      }
+  }
+}
+max
