@@ -1,5 +1,4 @@
 MyFile <- "data/input_25.txt"
-#MyFile <- "testdata/test_25.txt"
 data <- readLines(MyFile)
 n <- max(nchar(data))
 data <- matrix(unlist(strsplit(data,split = "")),ncol = n,byrow = TRUE)
