@@ -1,8 +1,9 @@
-# x=169..206, y=-108..-68
-target.x.min <- 169#20
-target.x.max <- 206#30
-target.y.min <- -108#-10
-target.y.max <- -68#-5
+sentence <- readLines("data/input_17.txt")
+library(strex)
+target.x.min <- str_nth_number(sentence, n = 1,negs = TRUE)
+target.x.max <- str_nth_number(sentence, n = 2,negs = TRUE)
+target.y.min <- str_nth_number(sentence, n = 3,negs = TRUE)
+target.y.max <- str_nth_number(sentence, n = 4,negs = TRUE)
 result.x <- result.y <- vector()
 i <- 1
 max.y <- max <- -Inf
