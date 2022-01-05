@@ -1,3 +1,24 @@
+rad2tab <- function(x){
+  cisla <- pocty <-vector()
+  j <- 1
+  pocty[j] <- 0  
+  for (i in (1:length(x))){
+    if (x[i]==(-1)){
+      pocty[j] <- pocty[j]+1
+    } else if (x[i]==(-2)){
+      pocty[j] <- pocty[j]-1
+    }    else  {
+      cisla[j]  <- x[i]
+      j <- j+1
+      pocty[j] <- pocty[j-1]}
+  }
+  return(list(pocty=pocty[-length(pocty)], cisla=cisla))
+} 
+snailsum <- function(a,b){
+  sum.cisla <- c(a$cisla,b$cisla)
+  sum.pocty <- c(a$pocty,b$pocty)+1
+  return(list(pocty=sum.pocty, cisla=sum.cisla))
+}
 explode <- function(a){
   pocty <- as.numeric(a$pocty)
   cisla <- as.numeric(a$cisla)
@@ -21,8 +42,6 @@ explode <- function(a){
 split <- function(a){
   pocty <- as.numeric(a$pocty)
   cisla <- as.numeric(a$cisla)
-  # #
-  # cisla <- c(10,5,4,5,19,28)
   ii <- which(cisla>9)[1]
   nove1 <- ceiling(cisla[ii]/2)
   nove2 <- floor(cisla[ii]/2)
@@ -39,27 +58,6 @@ split <- function(a){
   }
   return(list(pocty=pocty, cisla=cisla))
 }
-snailsum <- function(a,b){
-  sum.cisla <- c(a$cisla,b$cisla)
-  sum.pocty <- c(a$pocty,b$pocty)+1
-  return(list(pocty=sum.pocty, cisla=sum.cisla))
-}
-rad2tab <- function(x){
-  cisla <- pocty <-vector()
-  j <- 1
-  pocty[j] <- 0  
-  for (i in (1:length(x))){
-    if (x[i]==(-1)){
-      pocty[j] <- pocty[j]+1
-    } else if (x[i]==(-2)){
-      pocty[j] <- pocty[j]-1
-    }    else  {
-      cisla[j]  <- x[i]
-      j <- j+1
-      pocty[j] <- pocty[j-1]}
-  }
-  return(list(pocty=pocty[-length(pocty)], cisla=cisla))
-} 
 magnitude <- function(kuk){
   repeat{
     i <- which.max(kuk$pocty)  
@@ -78,7 +76,7 @@ magnitude <- function(kuk){
 MyFile <- "data/input_18.txt"
 dataall <- readLines(MyFile)
 data.cisla <- data.pocty <- list()
-for (i in 1:length(dataall)){ #snailfish number as table
+for (i in 1:length(dataall)){ #snailfish number as a table
   radek <- unlist(strsplit(dataall[i],split = ""))
   temp <- gsub("\\[",-1,radek)
   temp <-gsub("\\]",-2,temp)
