@@ -1,14 +1,10 @@
-commands <- read.table("data/input_02.txt", header = FALSE)
-direction <- commands[,1]
-magnitude <- commands[,2]
-forward <- magnitude*(direction=="forward")
-down <- magnitude*(direction=="down")
-up <- magnitude*(direction=="up")
-aim <- cumsum(down-up)
+commands <- read.table("data/input_02.txt",col.names = c("direction","magnitude"))
 
-horizontal <- sum(forward)
-depth <- sum(down)-sum(up)
-depth.2 <- sum(forward*aim)
+commands %<>%
+  mutate(forward = magnitude * (direction=="forward")) %>% 
+  mutate(down = magnitude * (direction=="down")) %>% 
+  mutate(up = magnitude * (direction=="up")) %>% 
+  mutate(aim = cumsum(down-up)) 
 
-horizontal*depth
-horizontal*depth.2
+with(commands, sum(forward) * sum(down-up) )
+with(commands, sum(forward) * sum(forward*aim) )

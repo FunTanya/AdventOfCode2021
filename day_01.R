@@ -1,7 +1,6 @@
-  DF1 <- read.table("data/input_01.txt", header = FALSE)
-  x <- DF1$V1
-  # 1
-  sum(diff(x)>0)
-  # 2
-  n <- length(x)
-  sum(diff(x[1:(n-2)]+x[2:(n-1)]+x[3:n])>0)
+depths <- readLines("data/input_01.txt") %>% as.numeric()
+# 1
+sum(diff(depths) > 0)
+# 2
+index <- seq(1,length(depths)-2)
+sum(diff(depths[index]+depths[index+1]+depths[index+2]) > 0)
