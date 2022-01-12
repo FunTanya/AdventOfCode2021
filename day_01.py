@@ -8,8 +8,9 @@ def Mycounter(x):
         if diff>0:
             count +=1
     return count
+    
+# part 1
 print(Mycounter(depths))
-
 # part 2
 sum3=[]
 for i in range(0, len(depths)-2):

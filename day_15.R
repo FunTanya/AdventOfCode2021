@@ -1,19 +1,21 @@
 MyFile <- "data/input_15.txt"
-
-MyFile <- "testdata/test_15.txt"
 data.source <- readLines(MyFile)
 n <- max(nchar(data.source))
-data<- read.fwf(textConnection(data.source), rep(1, n)) ######### 
-newdata <- cbind(data,data+1,data+2,data+3,data+4)
-newdata <- rbind(newdata,newdata+1,newdata+2,newdata+3,newdata+4)
-newdata <-  newdata %% 9
-
-newdata[newdata==0] <- 9
-data <- newdata
-
-n <- 5*n
+data<- read.fwf(textConnection(data.source), rep(1, n)) 
+######### 
+partB <- FALSE  # part A or B
+if (partB==TRUE){
+  newdata <- cbind(data,data+1,data+2,data+3,data+4)
+  newdata <- rbind(newdata,newdata+1,newdata+2,newdata+3,newdata+4)
+  newdata <-  newdata %% 9
+  newdata[newdata==0] <- 9
+  data <- newdata
+  n <- 5*n
+}
 ###########
 nn <- n*n
+start=Sys.time()
+# "naive"
 path <- matrix(Inf, nc=n, nr=n,byrow = TRUE)
 path[1,1] <- 0 
 Z.visited <-vector() 
@@ -58,6 +60,8 @@ repeat{
       path[i+1,j] <- alt
     }
   }
-  kuk <- path[n,n]
+  result <- path[n,n]
   if (length(Z.unvisited)==0) break
 }
+result
+Sys.time()-start
