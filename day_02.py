@@ -1,26 +1,28 @@
 # part 1
 f = open("data/input_02.txt")
-depth, horizontal = 0, 0
+data = []
 for line in f:
-    number = int(line.rstrip().split()[1])
-    if line.rstrip().split()[0]=="down":
-        depth += number
-    elif line.rstrip().split()[0]=="up":
-        depth -= number 
+    direction, magnitude = line.split()
+    data.append([direction,int(magnitude)])
+
+depth, horizontal = 0, 0
+for direction, magnitude in data:
+    if direction=="down":
+        depth += magnitude
+    elif direction=="up":
+        depth -= magnitude
     else:
-        horizontal += number
+        horizontal += magnitude
 print(depth*horizontal)
 
 # part 2
-f = open("data/input_02.txt")
 depth, horizontal, aim = 0, 0, 0
-for line in f:
-    number = int(line.rstrip().split()[1])
-    if line.rstrip().split()[0]=="down":
-        aim += number
-    elif line.rstrip().split()[0]=="up":
-        aim -= number 
+for direction, magnitude in data:
+    if direction=="down":
+        aim += magnitude
+    elif direction=="up":
+        aim -= magnitude 
     else:
-        horizontal += number
-        depth += aim*number
+        horizontal += magnitude
+        depth += aim*magnitude
 print(depth*horizontal)
