@@ -1,6 +1,5 @@
-f = open("input_01.txt")
-data = f.readlines()
-depths = [int(i) for i in data]
+f = open("data/input_01.txt")
+depths = [int(line) for line in f]
 def Mycounter(x):
     count = 0
     for i in range(0, len(x)-1):
@@ -8,7 +7,7 @@ def Mycounter(x):
         if diff>0:
             count +=1
     return count
-    
+
 # part 1
 print(Mycounter(depths))
 # part 2
