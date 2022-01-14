@@ -5,12 +5,11 @@ def BitsToDec(x):
     str_digits = "".join(list_of_str_digits)
     return int(str_digits,2)
 
-data = []
-f = open("data/input_03.txt",'r')
-for line in f:
-    x = [int(i) for i in line.strip()]
-    data.append(x)
-
+data = [] 
+with open("data/input_03.txt") as f: # single digits
+    for line in f:
+        x = [int(i) for i in line.strip()]
+        data.append(x)
 
 # part 1
 n=len(data)

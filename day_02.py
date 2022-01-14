@@ -1,9 +1,9 @@
 # part 1
-f = open("data/input_02.txt")
 data = []
-for line in f:
-    direction, magnitude = line.split()
-    data.append([direction,int(magnitude)])
+with open("data/input_02.txt") as f:
+    for line in f:
+        direction, magnitude = line.strip().split()
+        data.append((direction, int(magnitude)))
 
 depth, horizontal = 0, 0
 for direction, magnitude in data:

@@ -1,5 +1,9 @@
-f = open("data/input_01.txt")
-depths = [int(line) for line in f]
+depths = []
+with open("data/input_01.txt") as f:
+    #  depths = [int(line.strip()) for line in f] #shorter 
+    for line in f:
+        depths.append(int(line.strip()))
+    
 def Mycounter(x):
     count = 0
     for i in range(0, len(x)-1):
