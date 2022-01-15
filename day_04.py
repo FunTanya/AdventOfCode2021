@@ -35,6 +35,7 @@ class MyTable:
         return(self.won)
 
 first_win = len(lottery)+1
+last_win = 0
 for matrix in matrices:
     player_now = MyTable(matrix)
     counter = 0
@@ -46,8 +47,12 @@ for matrix in matrices:
             player_now.winner_order = counter
             break
     if player_now.winner_order < first_win:
-        winner = player_now
+        winner_first = player_now
         first_win = player_now.winner_order
+    if player_now.winner_order > last_win:
+        winner_last = player_now
+        last_win = player_now.winner_order
       
 
-winner.winning_number * winner.SumTable()
+winner_first.winning_number * winner_first.SumTable()
+winner_last.winning_number * winner_last.SumTable()
