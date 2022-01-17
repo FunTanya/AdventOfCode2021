@@ -3,9 +3,7 @@ with open("data/input_06.txt") as data:
     lanternfish = data.readline().strip().split(",")
     lanternfish = list(map(int, lanternfish))
 
-table = Counter(lanternfish + list(range(9)))
-table = sorted(table.items())
-counts = [x[1]-1 for x in table]
+counts = [Counter(lanternfish)[i] for i in range(9)]
 
 for i in range(256): # or 80
   old = counts[0]
